@@ -1,71 +1,34 @@
 const inquirer = require('inquirer');
 const fs = require("fs");
 
-const questions = ({ title, description, contents, installation, usage, license, contributors, tests, gitHub, email}) =>
- ` ## ${title}
+const generateMarkdown = require("./utils/generateMarkdown")
 
- ## Description
- ${description}
-
- ## Table of Contents
- * [Installation] (#installation)
- * [Usage] (#usage)
- * [License] (#license)
- * [Contributors] (#contributors)
- * [Tests] (#tests)
- * [Questions] (#Questions)
- 
-
- ${contents}
-
- ## Installation
- ${installation}
-
- ## Usage
- ${usage}
-
- ## License
- ${license}
-
- ## Contributors
- ${contributors}
-
- ## Tests
- ${tests}
-
- ## Questions
-
- For any questions, you may contact me via GitHub (https://github.com/${gitHub})
- or via email at ${email}
-
- `
-
-inquirer
-.prompt([
+const questions =
+[
     {
         type: "input",
         name: "title",
-        Message: "Enter ther title of your project"
+        message: "Enter ther title of your project"
     },
     {
         type: "input",
         name: "description",
-        Message: "Enter a description for your project"
+        message: "Enter a description for your project"
     },
     {
         type: "input",
         name: "installation",
-        Message: "describe the installation process of your application"
+        message: "describe the installation process of your application"
     },
     {
         type: "input",
         name: "usage",
-        Message: "What is your application used for?"
+        message: "What is your application used for?"
     },
     {
         type: "list",
         name: "license",
-        Message: "Choose a license for your application",
+        message: "Choose a license for your application",
         choices: [
             "Apache",
             "Boost",
@@ -77,28 +40,33 @@ inquirer
     {
         type: "input",
         name: "contributors",
-        Message: "Who coontributed to this application?"
+        message: "Who coontributed to this application?"
     },
     {
         type: "input",
         name: "tests",
-        Message: "Enter any instructions for testing tyhis application"
+        message: "Enter any instructions for testing tyhis application"
     },
     {
         type: "input",
         name: "userName",
-        Message: "Enter your GitHib username"
+        message: "Enter your GitHib username"
     },
     {
         type: "input",
         name: "userEmail",
-        Message: "Enter your email address for people to contact you"
+        message: "Enter your email address for people to contact you"
     },
-])
-.then((answers) => {
-    const generateREADME = questions(answers);
+]
+function init(){
+    inquirer.prompt(questions).then(function(answers){
+
+    const generateREADME = generateMarkdown(answers);
 
     fs.writeFile('README.md', generateREADME, (err) =>
     err ? console.log(err) : console.log("README created sucessfully!")
     );
-});
+}
+)};
+
+init();

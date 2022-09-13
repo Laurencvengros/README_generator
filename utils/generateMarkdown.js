@@ -1,3 +1,39 @@
+function renderLicenseBadge(license) {
+    if (license !== "no license to display"){
+        return `
+        ![badge](https://img.shields.io/badge/license-${license}-blue)
+        `;
+    }else{
+        return ' ';
+    }
+}
+
+
+function renderLicenseLink(license) {
+    if (license !== 'no license to display') {
+        return `
+        [${license}](https://choosealicense.com/licenses/${license})
+        `
+    }else{
+        return ' ';
+    }
+}
+
+
+function renderLicenseSection(license) {
+    if (license !== 'no license to display') {
+        return `
+        ## [License](#table-of-contents)
+        The application is covered under the following license:
+        ${renderLicenseLink(license)}
+          `;
+        } else {
+          return ' ';
+        }
+}
+
+
+
 function generateMarkdown(data){
     return `
     
@@ -6,7 +42,9 @@ function generateMarkdown(data){
     ## Description
         ${data.description}
 
-    ## Table of Contents
+    
+
+    ## Table-of-Contents
     * [Installation] (#installation)
     * [Usage] (#usage)
     * [License] (#license)
@@ -24,7 +62,8 @@ function generateMarkdown(data){
         ${data.usage}
 
     ## License
-        ${data.license}
+    ${renderLicenseBadge(data.license)}
+    ${renderLicenseSection(data.license)}
 
     ## Contributors
         ${data.contributors}
