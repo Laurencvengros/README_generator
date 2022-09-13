@@ -1,41 +1,42 @@
 const inquirer = require('inquirer');
+const fs = require("fs");
 
-const generateContent = ({ title, description, contents, installation, usage, license, contributors, tests, gitHub, email}) =>
- ` ## ${answers.title}
+const questions = ({ title, description, contents, installation, usage, license, contributors, tests, gitHub, email}) =>
+ ` ## ${title}
 
  ## Description
- ${answers.description}
+ ${description}
 
  ## Table of Contents
- * [Installation] (#Installation)
- * [Usage] (#Usage)
- * [License] (#License)
- * [Contributors] (#Contributors)
- * [Tests] (#Tests)
+ * [Installation] (#installation)
+ * [Usage] (#usage)
+ * [License] (#license)
+ * [Contributors] (#contributors)
+ * [Tests] (#tests)
  * [Questions] (#Questions)
  
 
- ${answers.contents}
+ ${contents}
 
  ## Installation
- ${answers.installation}
+ ${installation}
 
  ## Usage
- ${answers.usage}
+ ${usage}
 
  ## License
- ${answers.license}
+ ${license}
 
  ## Contributors
- ${answers.contributors}
+ ${contributors}
 
  ## Tests
- ${answers.tests}
+ ${tests}
 
  ## Questions
 
- For any other questions, you may contact me via GitHub (https://github.com/${answers.gitHub})
- or via email at ${answers.email}
+ For any questions, you may contact me via GitHub (https://github.com/${gitHub})
+ or via email at ${email}
 
  `
 
@@ -94,3 +95,10 @@ inquirer
         Message: "Enter your email address for people to contact you"
     },
 ])
+.then((answers) => {
+    const generateREADME = questions(answers);
+
+    fs.writeFile('README.md', generateREADME, (err) =>
+    err ? console.log(err) : console.log("README created sucessfully!")
+    );
+});
