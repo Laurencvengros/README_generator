@@ -44,12 +44,12 @@ const questions = () =>{
     {
         type: "input",
         name: "contributors",
-        message: "Who coontributed to this application?"
+        message: "Who contributed to this application?"
     },
     {
         type: "input",
         name: "tests",
-        message: "Enter any instructions for testing tyhis application"
+        message: "Enter any instructions for testing this application"
     },
     {
         type: "input",
