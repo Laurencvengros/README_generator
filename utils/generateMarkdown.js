@@ -51,77 +51,84 @@ function renderLicenseSection(license) {
 function generateMarkdown(data){
     return `
     
-    ## ${data.title}
+## ${data.title}
 
-    ${renderLicenseBadge(data.license)}
+${renderLicenseBadge(data.license)}
 
 
-    ${data.description}
+${data.description}
 
-    [Link to deployed site.](${data.url})
+[Link to deployed site.](${data.url})
 
     
 
-    ## Table-of-Contents
-    1. Functionality
-        -[User Story](#user%20story)
-        -[Acceptance Criteria](#acceptance%20criteria)
-        -[Screenshots](#screenshots)
-    1. [Installation] (#installation)
-    2. [Usage] (#usage)
-    3. [License] (#license)
-    4. [Contributors] (#contributors)
-    5. [Tests] (#tests)
-    6. [Questions] (#Questions)
- 
+## Table-of-Contents
+1. Functionality
+
+    -[User Story](#user-story)
+
+    -[Acceptance Criteria](#acceptance-criteria)
+
+    -[Screenshots](#screenshots)
+
+1. [Installation](#installation)
+
+2. [Usage](#usage)
+
+3. [License](#license)
+
+4. [Contributors](#contributors)
+
+5. [Tests](#tests)
+
+6. [Questions](#Questions)
+
     
 
-    ## Functionality
+## Functionality
+${data.functionality}
 
-     ${data.functionality}
+---
 
-    ---
-
-    ## User Story
-
-
-    ---
-
-    ## Acceptance Criteria
+## User Story
 
 
-    ---
+---
+
+## Acceptance Criteria
 
 
-    ## Screenshots
+---
+
+## Screenshots
 
 
-    ---
+---
 
-    ## Installation
+## Installation 
 
-        ${data.installation}
+${data.installation}
 
-    ## Usage
+## Usage
 
-        ${data.usage}
+${data.usage}
 
-    ## License
+## License
 
-        ${renderLicenseBadge(data.license)}
-        ${renderLicenseSection(data.license)}
+${renderLicenseBadge(data.license)}
+${renderLicenseSection(data.license)}
 
-    ## Contributors
+## [Contributors](#table-of-contents)
 
-        ${data.contributors}
+${data.contributors}
 
-    ## Tests
+## Tests
 
-        ${data.tests}
+${data.tests}
 
-    ## Questions
+## Questions
 
-    For any questions, you may contact me via GitHub (https://github.com/${data.gitHub})
+For any questions, you may contact me via GitHub (https://github.com/${data.gitHub})
     or via email at ${data.email}
 
  `;
