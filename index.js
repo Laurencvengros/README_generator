@@ -1,7 +1,7 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
 const generateMarkdown = require("./utils/generateMarkdown")
-
+console.log('hey');
 const questions = () =>{
         return inquirer.prompt([
     {
@@ -55,8 +55,9 @@ const questions = () =>{
         name: "email",
         message: "Enter your email address for people to contact you"
     }
-])
+]);
 }
+
 
 const writeToFile = data => {
     return new Promise((resolve, reject) =>{
@@ -75,7 +76,7 @@ const writeToFile = data => {
 }
 
 const init = () =>{
-    return inquirer.prompt(questions);
+    return questions();
 }
 
 init()
@@ -90,15 +91,3 @@ init()
 })
 
 
-// function init(){
-//     inquirer.prompt(questions).then(function(answers){
-
-//     const generateREADME = generateMarkdown(answers);
-
-//     fs.writeFile('README.md', generateREADME, (err) =>
-//     err ? console.log(err) : console.log("README created sucessfully!")
-//     );
-// }
-// )};
-
-// init();
