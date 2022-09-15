@@ -1,10 +1,9 @@
-const inquirer = require('inquirer');
+const inquirer = require("inquirer");
 const fs = require("fs");
-
 const generateMarkdown = require("./utils/generateMarkdown")
 
-const questions =
-[
+const questions = () =>{
+        return inquirer.prompt([
     {
         type: "input",
         name: "title",
@@ -31,10 +30,9 @@ const questions =
         message: "Choose a license for your application",
         choices: [
             "Apache",
-            "Boost",
             "GNU",
             "Mozilla",
-            "Open"
+            "MIT"
         ]
     },
     {
@@ -49,24 +47,58 @@ const questions =
     },
     {
         type: "input",
-        name: "userName",
+        name: "gitHub",
         message: "Enter your GitHib username"
     },
     {
         type: "input",
-        name: "userEmail",
+        name: "email",
         message: "Enter your email address for people to contact you"
-    },
-]
-function init(){
-    inquirer.prompt(questions).then(function(answers){
-
-    const generateREADME = generateMarkdown(answers);
-
-    fs.writeFile('README.md', generateREADME, (err) =>
-    err ? console.log(err) : console.log("README created sucessfully!")
-    );
+    }
+])
 }
-)};
 
-init();
+const writeToFile = data => {
+    return new Promise((resolve, reject) =>{
+    fs.writeFile( 'README.md', data, err =>{
+            if(err){
+                reject (err);
+                return;
+            }
+                resolve({
+                ok: true,
+                message: console.log("README successfully created!")
+            });
+        })
+
+    })
+}
+
+const init = () =>{
+    return inquirer.prompt(questions);
+}
+
+init()
+.then(answers =>{
+    return generateMarkdown(answers);
+})
+.then(readmeData => {
+    return writeToFile(readmeData);
+})
+.catch(err =>{
+    console.log(err);
+})
+
+
+// function init(){
+//     inquirer.prompt(questions).then(function(answers){
+
+//     const generateREADME = generateMarkdown(answers);
+
+//     fs.writeFile('README.md', generateREADME, (err) =>
+//     err ? console.log(err) : console.log("README created sucessfully!")
+//     );
+// }
+// )};
+
+// init();

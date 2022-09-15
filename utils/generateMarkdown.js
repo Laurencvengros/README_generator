@@ -10,7 +10,7 @@ function renderLicenseBadge(license) {
 
 
 function renderLicenseLink(license) {
-    if (license !== 'no license to display') {
+    if (license !== "no license to display") {
         return `
         [${license}](https://choosealicense.com/licenses/${license})
         `
@@ -38,13 +38,15 @@ function generateMarkdown(data){
     return `
     
     ## ${data.title}
+    ${renderLicenseBadge(data.license)}
 
-    ## Description
+    ## [Description] 
         ${data.description}
 
     
 
     ## Table-of-Contents
+  
     * [Installation] (#installation)
     * [Usage] (#usage)
     * [License] (#license)
@@ -52,6 +54,7 @@ function generateMarkdown(data){
     * [Tests] (#tests)
     * [Questions] (#Questions)
  
+    
 
        
 
@@ -63,6 +66,7 @@ function generateMarkdown(data){
 
     ## License
     ${renderLicenseBadge(data.license)}
+    ${renderLicenseLink(license)};
     ${renderLicenseSection(data.license)}
 
     ## Contributors
