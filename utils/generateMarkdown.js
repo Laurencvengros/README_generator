@@ -10,12 +10,26 @@ function renderLicenseBadge(license) {
 
 
 function renderLicenseLink(license) {
-    if (license !== "no license to display") {
+    if (license === "mozilla") {
         return `
-        [${license}](https://choosealicense.com/licenses/${license})
+        [${license}](https://choosealicense.com/licenses/mpl-2.0/)
         `
-    }else{
-        return ' ';
+    }else if( license === 'apache'){
+        return `
+        [${license}](https://choosealicense.com/licenses/apache-2.0/)
+        `
+    }else if( license === 'mit'){
+        return `
+        [${license}](https://choosealicense.com/licenses/mit/)
+        `
+    }else if( license === 'GNU'){
+        return `
+        [${license}](https://choosealicense.com/licenses/agpl-3.0/)
+        `
+    }else if( license === 'no license'){
+        return `
+        no license to display
+        `
     }
 }
 
@@ -38,15 +52,21 @@ function generateMarkdown(data){
     return `
     
     ## ${data.title}
+
     ${renderLicenseBadge(data.license)}
 
-    ## [Description] 
-        ${data.description}
+
+    ${data.description}
+
+    [Link to deployed site.](${data.url})
 
     
 
     ## Table-of-Contents
-  
+    1. Functionality
+        -[User Story](#user%20story)
+        -[Acceptance Criteria](#acceptance%20criteria)
+        -[Screenshots](#screenshots)
     1. [Installation] (#installation)
     2. [Usage] (#usage)
     3. [License] (#license)
@@ -56,22 +76,47 @@ function generateMarkdown(data){
  
     
 
-       
+    ## Functionality
+
+     ${data.functionality}
+
+    ---
+
+    ## User Story
+
+
+    ---
+
+    ## Acceptance Criteria
+
+
+    ---
+
+
+    ## Screenshots
+
+
+    ---
 
     ## Installation
+
         ${data.installation}
 
     ## Usage
+
         ${data.usage}
 
     ## License
-    ${renderLicenseBadge(data.license)}
-    ${renderLicenseSection(data.license)}
+
+        ${renderLicenseBadge(data.license)}
+        ${renderLicenseSection(data.license)}
 
     ## Contributors
+
         ${data.contributors}
 
     ## Tests
+
         ${data.tests}
 
     ## Questions

@@ -12,7 +12,12 @@ const questions = () =>{
     {
         type: "input",
         name: "description",
-        message: "Enter a description for your project"
+        message: "Enter a brief description for your project"
+    },
+    {
+        type: "input",
+        name: "functionality",
+        message: "Enter the details describing what your project is used for"
     },
     {
         type: "input",
@@ -29,10 +34,11 @@ const questions = () =>{
         name: "license",
         message: "Choose a license for your application",
         choices: [
-            "Apache",
+            "apache",
             "GNU",
             "Mozilla",
-            "MIT"
+            "mit",
+            "no license"
         ]
     },
     {
@@ -54,7 +60,12 @@ const questions = () =>{
         type: "input",
         name: "email",
         message: "Enter your email address for people to contact you"
-    }
+    },
+    {
+        type: "input",
+        name: "url",
+        message: "Enter the URL for the live site",
+      },
 ]);
 }
 
