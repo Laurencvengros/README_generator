@@ -1,7 +1,7 @@
 function renderLicenseBadge(license) {
     if (license !== "no license to display"){
         return `
-        ![badge](https://img.shields.io/badge/license-${license}-blue)
+![licence-badge](http://img.shields.io/badge/license-${license}-blue.svg)
         `;
     }else{
         return ' ';
@@ -12,19 +12,19 @@ function renderLicenseBadge(license) {
 function renderLicenseLink(license) {
     if (license === "mozilla") {
         return `
-        [${license}](https://choosealicense.com/licenses/mpl-2.0/)
+[${license}](https://choosealicense.com/licenses/mpl-2.0/)
         `
     }else if( license === 'apache'){
         return `
-        [${license}](https://choosealicense.com/licenses/apache-2.0/)
+[${license}](https://choosealicense.com/licenses/apache-2.0/)
         `
     }else if( license === 'mit'){
         return `
-        [${license}](https://choosealicense.com/licenses/mit/)
+[${license}](https://choosealicense.com/licenses/mit/)
         `
     }else if( license === 'GNU'){
         return `
-        [${license}](https://choosealicense.com/licenses/agpl-3.0/)
+[${license}](https://choosealicense.com/licenses/agpl-3.0/)
         `
     }else if( license === 'no license'){
         return `
@@ -37,9 +37,9 @@ function renderLicenseLink(license) {
 function renderLicenseSection(license) {
     if (license !== 'no license to display') {
         return `
-        ## [License](#table-of-contents)
-        The application is covered under the following license:
-        ${renderLicenseLink(license)}
+        
+The application is covered under the following license: ${license}
+For more information about this license, click the link:${renderLicenseLink(license)}
           `;
         } else {
           return ' ';
@@ -58,12 +58,12 @@ ${renderLicenseBadge(data.license)}
 
 ${data.description}
 
-[Link to deployed site.](${data.url})
+Link to deployed site.(${data.url})
 
     
 
 ## Table-of-Contents
-1. Functionality
+1. [Functionality](#functionality)
 
     -[User Story](#user-story)
 
@@ -118,7 +118,7 @@ ${data.usage}
 ${renderLicenseBadge(data.license)}
 ${renderLicenseSection(data.license)}
 
-## [Contributors](#table-of-contents)
+## Contributors
 
 ${data.contributors}
 
