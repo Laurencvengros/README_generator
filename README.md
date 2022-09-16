@@ -1,6 +1,6 @@
 
     
-## Professional README Generator
+## 09 - Professional README Generator
 
 
 
@@ -76,9 +76,9 @@ When you create an application in GitHub, it is important to have a professional
 
 ## Screenshots
 
-![terminal-screen](images/terminal_screenshot.jpg "Screenshot of question prompt in terminal")
+![terminal-screen](/src/images/terminal_screenshot.jpg "Screenshot of question prompt in terminal")
 
-![README-product](images/README_product_image.jpg "Screenshot of what README looks like finished")
+![README-product](/src/images/README_product_image.jpg "Screenshot of what README looks like finished")
 
 
 
