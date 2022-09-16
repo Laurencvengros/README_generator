@@ -115,6 +115,14 @@ For more information about this license, click the link:
 
 ## Contributors
 
+To contribute to this application:
+ 1. fork the repo
+ 2. create your own branch 
+ 3. commit your local changes
+ 4. push your branch to GitHub
+
+Pending review, your changes will be added and pending review.
+
 Lauren Cvengros
 
 ---
